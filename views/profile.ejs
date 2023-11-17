@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: #1c1c1c;
+            padding: 10px;
+            text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-content: space-around;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            padding: 10px;
+            font-size: 24px;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 10px;
+            padding: 10px;
+        }
+
+        .item {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            text-align: right; /* Align the text to the right within the button */
+        }
+
+        .dropdown-button {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #1c1c1c;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            text-align: left;
+            right: 0; /* Align the dropdown content to the right */
+        }
+
+        .dropdown-content a {
+            color: #4CAF50;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #4CAF50;
+            color: #fff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        #profilePic {
+            border-radius: 50%;
+        }
+
+        nav {
+            position: absolute;
+            top: 10px; /* Adjust the top position as needed */
+            right: 10px; /* Adjust the right position as needed */
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <h1>Your Profile</h1>
+    <img src="<%= user.profilePicture %>" alt="Profile" id="profilePic"/>
+    <p><strong>Name:</strong> <%= user.displayName %></p>
+    <% if (user.email) { %>
+    <p><strong>Email:</strong> <%= user.email %></p>
+    <% } else { %>
+    <p><strong>Email:</strong> Not available</p>
+    <% } %>
+    <nav>
+        <div class="dropdown">
+            <button class="dropdown-button">Dropdown</button>
+            <div class="dropdown-content">
+                <a href="/main">Back to Main Page</a>
+                <a href="/submit-content">Publish</a>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="content-grid">
+    <!-- Replace these with actual content -->
+    <div class="item">Content 1</div>
+    <div class="item">Content 2</div>
+    <!-- More content items -->
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Main Page</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <div id="logo">Logo</div>
+        <div class="profile-dropdown">
+            <!-- Replace 'your_google_profile_picture_url' with the actual URL -->
+            <img src="<%= profilePicture %>" alt="Profile" id="profilePic" />
+            <div class="dropdown-content">
+                <a href="/profile">Profile</a>
+                <a href="/submit-content">Publish</a>
+                <% if (isAdmin) { %>
+                    <a href="/admin">Admin Panel</a>
+                <% } %>
+                <a href="/logout">Logout</a>
+            </div>
+        </div>
+    </header>
+    <main id="content">
+        <!-- Replace these divs with actual video or image content -->
+        <div class="media">Media 1</div>
+        <div class="media">Media 2</div>
+        <!-- More media elements -->
+    </main>
+
+</body>
+</html>

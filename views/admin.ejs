@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .user-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin: 10px auto;
+            width: 80%;
+            text-align: left;
+        }
+
+        .user-info {
+            margin: 10px 0;
+        }
+
+        form {
+            text-align: center;
+        }
+
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition: background-color 0.3s;
+        }
+
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <% users.forEach(function(user) { %>
+        <div class="user-container">
+            <div class="user-info">Name: <%= user.displayName %></div>
+            <div class="user-info">Email: <%= user.email %></div>
+            <div class="user-info">Admin: <%= user.isAdmin %></div>
+            <form action="/make-admin" method="post">
+                <input type="hidden" name="userId" value="<%= user.googleId %>">
+                <input type="submit" value="Make Admin">
+            </form>
+        </div>
+    <% }); %>
+    <h2>Content Moderation</h2>
+        <!-- Inside admin.ejs template -->
+        <div class="pending-content">
+            <% contentList.forEach(function(content) { %>
+                <div class="content-item">
+                    <h3><%= content.title %></h3>
+                    <p><%= content.body %></p>
+                    <img src="<%= content.imagePathOrURL %>" alt="Content Image">
+                    <!-- Other details and approval/rejection buttons go here -->
+                </div>
+            <% }); %>
+        </div>
+</body>
+</html>
